@@ -50,15 +50,16 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<String> login(HttpSession session, @RequestBody UserPasswordAuthentication body) {
 
+        //retrieves user credentials based on input username
         User u = userService.getUserByUsername(body.getUsername());
 
-        //compare user input password with the password associated with username
-        String message = userService.authenticatePassword(u.getPassword(), body.getPassword());
-
-        session.setAttribute("user", u.getUsername());
+        //compares the input string and the corresponding password in database
+        if (u.getPassword() == body.getPassword()) {
+            session.setAttribute("user", u.getUsername());
+        }
 
         authenticationLogger.info("");
-        return new ResponseEntity<String>(message, HttpStatus.OK);
+        return new ResponseEntity<String>("Log in successful.", HttpStatus.OK);
     }
 
     @PostMapping("/logout")

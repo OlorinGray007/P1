@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.planetarium.planetarium.exceptions.AuthenticationFailed;
+//import com.planetarium.planetarium.exceptions.AuthenticationFailed;
 import com.planetarium.planetarium.exceptions.EntityNull;
 import com.planetarium.planetarium.models.Planet;
 import com.planetarium.planetarium.service.PlanetService;
@@ -44,11 +44,11 @@ public class PlanetController {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(AuthenticationFailed.class)
+    /* @ExceptionHandler(AuthenticationFailed.class)
     public ResponseEntity<String> authenticationFailed(AuthenticationFailed e){
         planetLogger.error(e.getLocalizedMessage(), e);
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
-    }
+    } */
     
     @GetMapping("/api/planets")
     public ResponseEntity<List<Planet>> getAllPlanets() {

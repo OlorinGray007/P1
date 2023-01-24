@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.planetarium.planetarium.exceptions.AuthenticationFailed;
+//import com.planetarium.planetarium.exceptions.AuthenticationFailed;
 import com.planetarium.planetarium.exceptions.EntityNull;
 import com.planetarium.planetarium.models.Moon;
 import com.planetarium.planetarium.service.MoonService;
@@ -42,11 +42,11 @@ public class MoonController {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(AuthenticationFailed.class)
+    /* @ExceptionHandler(AuthenticationFailed.class)
     public ResponseEntity<String> authenticationFailed(AuthenticationFailed e){
         moonLogger.error(e.getLocalizedMessage(), e);
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
-    }
+    } */
 
     @GetMapping("/api/moons")
     public ResponseEntity<List<Moon>> getAllMoons() {
